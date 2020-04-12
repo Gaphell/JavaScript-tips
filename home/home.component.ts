@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +8,52 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   titles = Array(5).fill('Check Me');
-  subCategories = Array(3).fill('Food');
-  constructor() { }
+  names = Array(4).fill({category: 'orange', name: '🍊'});
+  uniqueNames = [];
+  numbers = this.generateNumbers();
+  slice = false;
+  initialLength: number;
+  numberObject = {};
+  show = false;
+  view = false;
+  peopleObject = {male: '✌️', female: '✌️'};
+  arrayObject = [];
 
-  ngOnInit(): void {
+  constructor() {
   }
 
+  ngOnInit(): void {
+    this.names.push(
+      {category: 'rice', name: '🍚'},
+      {category: 'pineapple', name: '🍍'},
+      {category: 'apple', name: '🍎'},
+      {category: 'strawberry', name: '🍓'},
+      {category: 'pizza', name: '🍕'},
+      {category: 'burger', name: '🍔'});
+    this.uniqueNames = Array.from(new Set(this.names));
+  }
+
+  generateNumbers() {
+    const list = [];
+    for (let i = 0; i <= 9; i++) {
+      list.push(i);
+    }
+    this.initialLength = list.length;
+    return list;
+  }
+
+  sliceArray() {
+    this.slice = !this.slice;
+    this.slice ? this.numbers.length = 4 : this.numbers = this.generateNumbers();
+  }
+
+  convertToObject() {
+    this.show = !this.show;
+    this.numberObject = {...this.numbers};
+  }
+
+  convertToArray() {
+    this.view = !this.view;
+    this.arrayObject = Object.values(this.peopleObject);
+  }
 }

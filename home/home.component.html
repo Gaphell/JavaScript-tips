@@ -1,14 +1,66 @@
-<ul>
-  <li>
-    <mat-radio-button *ngFor="let title of titles">
-      <mat-option [value]="title">{{title}}</mat-option>
-      <mat-checkbox [value]="option" *ngFor="let option of subCategories">
-        {{option}}
-      </mat-checkbox>
-    </mat-radio-button>
-  </li>
-</ul>
-
-<ng-container *ngFor="let checked of titles | checked: 'checked'">
-  {{checked}}
-</ng-container>
+<div class="container">
+  <table class="space">
+    <tr>
+      <!--    <td>-->
+      <mat-radio-button *ngFor="let title of titles">
+        <mat-option [value]="title">{{title}}</mat-option>
+      </mat-radio-button>
+      <!--    </td>-->
+    </tr>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <tr>
+      <td *ngFor="let item of names">
+        {{item.category}} {{item.name}}
+      </td>
+    </tr>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <tr>
+      <td *ngFor="let uniqueItem of uniqueNames">
+        {{uniqueItem.category}} {{uniqueItem.name}}
+      </td>
+    </tr>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <tr>
+      <td>
+        <button mat-raised-button color="green" class="hover" (click)="sliceArray()">{{'First Three'}}</button>
+      </td>
+      <td *ngFor="let number of numbers; let i = index">
+        {{i - 1}}: {{number}}
+      </td>
+    </tr>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <tr>
+      <td>
+        <button mat-raised-button class="hover"
+                (click)="convertToObject()">{{'Convert To Object'}}</button>
+      </td>
+      <td *ngFor="let number of numbers; let i = index">
+        <h1>
+          {{show ? numberObject[i] : '🤦‍'}}
+        </h1>
+      </td>
+    </tr>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <tr>
+      <td>
+        <button mat-raised-button class="hover"
+                (click)="convertToArray()">{{'Convert To Array'}}</button>
+      </td>
+      <td *ngFor="let object of arrayObject; let i = index">
+        <h1>
+          {{view ? object : '👎'}}
+        </h1>
+      </td>
+    </tr>
+  </table>
+  <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+  <ng-container *ngFor="let checked of titles | checked: 'checked'">
+    {{checked}}
+  </ng-container>
+</div>
