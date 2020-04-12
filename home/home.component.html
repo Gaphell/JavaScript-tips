@@ -1,1 +1,14 @@
-<button *ngFor="let title of titles">{{title}}</button>
+<ul>
+  <li>
+    <mat-radio-button *ngFor="let title of titles">
+      <mat-option [value]="title">{{title}}</mat-option>
+      <mat-checkbox [value]="option" *ngFor="let option of subCategories">
+        {{option}}
+      </mat-checkbox>
+    </mat-radio-button>
+  </li>
+</ul>
+
+<ng-container *ngFor="let checked of titles | checked: 'checked'">
+  {{checked}}
+</ng-container>

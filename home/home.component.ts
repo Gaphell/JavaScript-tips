@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  titles = Array(5).fill('Submit');
+  titles = Array(5).fill('Check Me');
+  subCategories = Array(3).fill('Food');
   constructor() { }
 
   ngOnInit(): void {
